@@ -1,6 +1,5 @@
 namespace FacultySoftwareXml
 {
-    // Один програмний засіб з XML-файлу (елемент SoftwareItem)
     public class SoftwareItem
     {
         public string Id { get; set; }
@@ -8,7 +7,6 @@ namespace FacultySoftwareXml
         public string Type { get; set; }
         public string Version { get; set; }
 
-        // необов'язкові атрибути, можуть бути порожні
         public string Architecture { get; set; }
         public string ReleaseYear { get; set; }
         public string RequiresAdmin { get; set; }
@@ -22,7 +20,6 @@ namespace FacultySoftwareXml
         public string DistributionMedium { get; set; }
         public string DistributionPath { get; set; }
 
-        // чи є ключове слово в назві або анотації (регістр не важливий)
         public bool HasKeyword(string keyword)
         {
             if (Name != null && Name.Contains(keyword, StringComparison.OrdinalIgnoreCase))

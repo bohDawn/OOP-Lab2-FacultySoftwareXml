@@ -2,7 +2,6 @@ using System.Xml;
 
 namespace FacultySoftwareXml
 {
-    // SAX - читаємо файл послідовно через XmlTextReader
     public class AnalyzerSax : IAnalyzerXmlStrategy
     {
         public List<SoftwareItem> Search(string path, SoftwareItem criteria)
@@ -73,7 +72,6 @@ namespace FacultySoftwareXml
             }
         }
 
-        // перевіряємо, чи підходить запис під критерії
         private bool IsSuitable(SoftwareItem item, SoftwareItem criteria)
         {
             if (!string.IsNullOrEmpty(criteria.Name) && !item.HasKeyword(criteria.Name))

@@ -3,7 +3,6 @@ using System.Xml.Xsl;
 
 namespace FacultySoftwareXml
 {
-    // Контекст: працює з будь-якою стратегією через інтерфейс
     public class Analyzer
     {
         private IAnalyzerXmlStrategy strategy;
@@ -18,7 +17,6 @@ namespace FacultySoftwareXml
             return strategy.Search(path, criteria);
         }
 
-        // значення атрибута без повторів, щоб заповнити Picker
         public static List<string> GetValues(string path, string xpath)
         {
             List<string> values = new List<string>();
@@ -34,7 +32,6 @@ namespace FacultySoftwareXml
             return values;
         }
 
-        // перетворення XML в HTML за допомогою XSL
         public static void Transform(string xmlPath, string xslPath, string htmlPath)
         {
             XslCompiledTransform xslt = new XslCompiledTransform();

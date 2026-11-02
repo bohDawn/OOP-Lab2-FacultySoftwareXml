@@ -18,7 +18,6 @@ namespace FacultySoftwareXml
         }
 
 #if WINDOWS
-        // перехоплюємо закриття вікна хрестиком
         private void OnWindowHandlerChanged(object sender, EventArgs e)
         {
             Window window = (Window)sender;
@@ -31,7 +30,6 @@ namespace FacultySoftwareXml
 
         private async void OnWindowClosing(Microsoft.UI.Windowing.AppWindow sender, Microsoft.UI.Windowing.AppWindowClosingEventArgs args)
         {
-            // спочатку скасовуємо закриття, потім питаємо користувача
             args.Cancel = true;
 
             bool answer = await Windows[0].Page.DisplayAlert("Вихід", "Чи дійсно ви хочете завершити роботу з програмою?", "Так", "Ні");

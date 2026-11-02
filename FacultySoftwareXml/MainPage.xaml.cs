@@ -11,7 +11,6 @@ namespace FacultySoftwareXml
             InitializeComponent();
         }
 
-        // при запуску беремо файли, які лежать у Resources/Raw
         protected override async void OnAppearing()
         {
             base.OnAppearing();
@@ -124,7 +123,6 @@ namespace FacultySoftwareXml
             return criteria;
         }
 
-        // значення враховується, тільки якщо стоїть галочка
         private string GetValue(CheckBox check, Picker picker)
         {
             if (check.IsChecked && picker.SelectedItem != null)
@@ -165,7 +163,6 @@ namespace FacultySoftwareXml
             return file.FullPath;
         }
 
-        // копіюємо файл з ресурсів програми в папку AppData
         private async Task<string> CopyFromResources(string fileName)
         {
             string path = Path.Combine(FileSystem.AppDataDirectory, fileName);

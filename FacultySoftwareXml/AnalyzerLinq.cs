@@ -2,7 +2,6 @@ using System.Xml.Linq;
 
 namespace FacultySoftwareXml
 {
-    // LINQ to XML - завантажуємо XDocument і пишемо запит from ... where ... select
     public class AnalyzerLinq : IAnalyzerXmlStrategy
     {
         public List<SoftwareItem> Search(string path, SoftwareItem criteria)

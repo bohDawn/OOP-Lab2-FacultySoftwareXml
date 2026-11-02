@@ -2,7 +2,6 @@ using System.Xml;
 
 namespace FacultySoftwareXml
 {
-    // DOM - завантажуємо весь документ у XmlDocument і шукаємо через XPath
     public class AnalyzerDom : IAnalyzerXmlStrategy
     {
         public List<SoftwareItem> Search(string path, SoftwareItem criteria)
@@ -16,15 +15,12 @@ namespace FacultySoftwareXml
             foreach (XmlNode node in nodes)
             {
                 SoftwareItem item = ReadItem(node);
-                // ключове слово перевіряємо вже після XPath
                 if (string.IsNullOrEmpty(criteria.Name) || item.HasKeyword(criteria.Name))
                     result.Add(item);
             }
             return result;
         }
 
-        // складаємо запит типу //SoftwareItem[@Type="..." and Author/@Faculty="..."]
-        // лапки подвійні, бо в назвах є апостроф
         private string MakeXPath(SoftwareItem criteria)
         {
             string conditions = "";
