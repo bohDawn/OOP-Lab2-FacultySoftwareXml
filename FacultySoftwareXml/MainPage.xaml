@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FacultySoftwareXml.MainPage">
+
+    <Grid ColumnDefinitions="450,*" Padding="10" ColumnSpacing="10">
+
+        <ScrollView Grid.Column="0">
+            <VerticalStackLayout Spacing="5">
+
+                <Label Text="XML-файл:" FontAttributes="Bold" />
+                <Label x:Name="XmlFileLabel" Text="не вибрано" />
+                <Button Text="Відкрити XML" Clicked="OnOpenXmlClicked" />
+
+                <Label Text="XSL-файл:" FontAttributes="Bold" />
+                <Label x:Name="XslFileLabel" Text="не вибрано" />
+                <Button Text="Відкрити XSL" Clicked="OnOpenXslClicked" />
+
+                <Label Text="Спосіб аналізу:" FontAttributes="Bold" />
+                <RadioButton x:Name="SaxRadio" Content="SAX" GroupName="Strategy" IsChecked="True" />
+                <RadioButton x:Name="DomRadio" Content="DOM" GroupName="Strategy" />
+                <RadioButton x:Name="LinqRadio" Content="LINQ to XML" GroupName="Strategy" />
+
+                <Label Text="Параметри пошуку:" FontAttributes="Bold" />
+                <Label Text="Ключове слово (в назві або анотації):" />
+                <Entry x:Name="NameEntry" />
+
+                <HorizontalStackLayout>
+                    <CheckBox x:Name="TypeCheck" />
+                    <Label Text="Вид" WidthRequest="150" VerticalOptions="Center" />
+                    <Picker x:Name="TypePicker" WidthRequest="230" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <CheckBox x:Name="FacultyCheck" />
+                    <Label Text="Факультет" WidthRequest="150" VerticalOptions="Center" />
+                    <Picker x:Name="FacultyPicker" WidthRequest="230" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <CheckBox x:Name="ChairCheck" />
+                    <Label Text="Кафедра" WidthRequest="150" VerticalOptions="Center" />
+                    <Picker x:Name="ChairPicker" WidthRequest="230" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <CheckBox x:Name="LicenseCheck" />
+                    <Label Text="Ліцензія" WidthRequest="150" VerticalOptions="Center" />
+                    <Picker x:Name="LicensePicker" WidthRequest="230" />
+                </HorizontalStackLayout>
+
+                <Button Text="Пошук" Clicked="OnSearchClicked" />
+                <Button Text="Трансформувати в HTML" Clicked="OnTransformClicked" />
+                <Button Text="Clear" Clicked="OnClearClicked" />
+                <Button Text="Вихід" Clicked="OnExitClicked" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid Grid.Column="1" RowDefinitions="Auto,*">
+            <Label x:Name="CountLabel" Text="Результати пошуку:" FontAttributes="Bold" />
+            <ScrollView Grid.Row="1">
+                <Label x:Name="ResultLabel" LineBreakMode="WordWrap" />
+            </ScrollView>
+        </Grid>
+
+    </Grid>
+</ContentPage>

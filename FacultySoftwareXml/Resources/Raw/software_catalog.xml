@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Програмне забезпечення на мережі факультету (варіант 9) -->
+<FacultySoftwareCatalog>
+
+  <!-- 7 атрибутів -->
+  <SoftwareItem Id="1" Name="Visual Studio Community" Type="Середовище розробки" Version="17.11"
+                Architecture="x64" ReleaseYear="2024" RequiresAdmin="true">
+    <Annotation>Середовище розробки для C# та C++</Annotation>
+    <Author FullName="Коваленко І.П." Faculty="Факультет комп'ютерних наук та кібернетики" Chair="Кафедра теорії та технології програмування"/>
+    <UsageTerms License="Академічна">Тільки для навчання</UsageTerms>
+    <Distribution Medium="Мережевий диск" Path="\\server\soft\vs2022"/>
+  </SoftwareItem>
+
+  <!-- 6 атрибутів -->
+  <SoftwareItem Id="2" Name="Python" Type="Мова програмування" Version="3.12"
+                Architecture="x64" ReleaseYear="2024">
+    <Annotation>Інтерпретатор мови Python</Annotation>
+    <Author FullName="Мельник О.В." Faculty="Факультет комп'ютерних наук та кібернетики" Chair="Кафедра інформаційних систем"/>
+    <UsageTerms License="Безкоштовна">Можна використовувати без обмежень</UsageTerms>
+    <Distribution Medium="Сайт" Path="https://www.python.org"/>
+  </SoftwareItem>
+
+  <!-- 5 атрибутів -->
+  <SoftwareItem Id="3" Name="LibreOffice" Type="Офісний пакет" Version="24.2"
+                RequiresAdmin="true">
+    <Annotation>Текстовий редактор, таблиці та презентації</Annotation>
+    <Author FullName="Шевчук Н.А." Faculty="Факультет інформаційних технологій" Chair="Кафедра програмної інженерії"/>
+    <UsageTerms License="Безкоштовна">Можна використовувати без обмежень</UsageTerms>
+    <Distribution Medium="Мережевий диск" Path="\\server\soft\libreoffice"/>
+  </SoftwareItem>
+
+  <!-- 6 атрибутів -->
+  <SoftwareItem Id="4" Name="MATLAB" Type="Математичний пакет" Version="R2023b"
+                Architecture="x64" ReleaseYear="2023">
+    <Annotation>Математичні обчислення та графіки</Annotation>
+    <Author FullName="Бондаренко А.С." Faculty="Факультет комп'ютерних наук та кібернетики" Chair="Кафедра обчислювальної математики"/>
+    <UsageTerms License="Комерційна">Ліцензія на 30 комп'ютерів у класі</UsageTerms>
+    <Distribution Medium="Сервер" Path="\\server\install\matlab"/>
+  </SoftwareItem>
+
+  <!-- 4 атрибути -->
+  <SoftwareItem Id="5" Name="Visual Studio Code" Type="Середовище розробки" Version="1.92">
+    <Annotation>Редактор коду для різних мов програмування</Annotation>
+    <Author FullName="Шевчук Н.А." Faculty="Факультет інформаційних технологій" Chair="Кафедра програмної інженерії"/>
+    <UsageTerms License="Безкоштовна">Можна використовувати без обмежень</UsageTerms>
+    <Distribution Medium="Мережевий диск" Path="\\server\soft\vscode"/>
+  </SoftwareItem>
+
+  <!-- 7 атрибутів -->
+  <SoftwareItem Id="6" Name="Microsoft Office" Type="Офісний пакет" Version="2016"
+                Architecture="x86" ReleaseYear="2016" RequiresAdmin="true">
+    <Annotation>Word, Excel та PowerPoint</Annotation>
+    <Author FullName="Ткаченко М.О." Faculty="Факультет інформаційних технологій" Chair="Кафедра програмної інженерії"/>
+    <UsageTerms License="Комерційна">Тільки на комп'ютерах університету</UsageTerms>
+    <Distribution Medium="Сервер" Path="\\server\install\office2016"/>
+  </SoftwareItem>
+
+  <!-- 5 атрибутів -->
+  <SoftwareItem Id="7" Name="GNU Octave" Type="Математичний пакет" Version="6.4"
+                ReleaseYear="2021">
+    <Annotation>Безкоштовний аналог MATLAB</Annotation>
+    <Author FullName="Бондаренко А.С." Faculty="Факультет комп'ютерних наук та кібернетики" Chair="Кафедра обчислювальної математики"/>
+    <UsageTerms License="Безкоштовна">Можна використовувати без обмежень</UsageTerms>
+    <Distribution Medium="Сайт" Path="https://octave.org"/>
+  </SoftwareItem>
+
+</FacultySoftwareCatalog>
