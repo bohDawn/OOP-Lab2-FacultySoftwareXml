@@ -38,5 +38,58 @@ namespace FacultySoftwareXml
             xslt.Load(xslPath);
             xslt.Transform(xmlPath, htmlPath);
         }
+
+        public static void SaveToXml(List<SoftwareItem> items, string path)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.AppendChild(xmlDoc.CreateXmlDeclaration("1.0", "utf-8", null));
+            XmlElement root = xmlDoc.CreateElement("FacultySoftwareCatalog");
+            xmlDoc.AppendChild(root);
+
+            foreach (SoftwareItem item in items)
+            {
+                XmlElement element = xmlDoc.CreateElement("SoftwareItem");
+                AddAttribute(xmlDoc, element, "Id", item.Id);
+                AddAttribute(xmlDoc, element, "Name", item.Name);
+                AddAttribute(xmlDoc, element, "Type", item.Type);
+                AddAttribute(xmlDoc, element, "Version", item.Version);
+                AddAttribute(xmlDoc, element, "Architecture", item.Architecture);
+                AddAttribute(xmlDoc, element, "ReleaseYear", item.ReleaseYear);
+                AddAttribute(xmlDoc, element, "RequiresAdmin", item.RequiresAdmin);
+                root.AppendChild(element);
+
+                XmlElement annotation = xmlDoc.CreateElement("Annotation");
+                annotation.InnerText = item.Annotation;
+                element.AppendChild(annotation);
+
+                XmlElement author = xmlDoc.CreateElement("Author");
+                AddAttribute(xmlDoc, author, "FullName", item.AuthorName);
+                AddAttribute(xmlDoc, author, "Faculty", item.Faculty);
+                AddAttribute(xmlDoc, author, "Chair", item.Chair);
+                element.AppendChild(author);
+
+                XmlElement terms = xmlDoc.CreateElement("UsageTerms");
+                AddAttribute(xmlDoc, terms, "License", item.License);
+                terms.InnerText = item.UsageTerms;
+                element.AppendChild(terms);
+
+                XmlElement distribution = xmlDoc.CreateElement("Distribution");
+                AddAttribute(xmlDoc, distribution, "Medium", item.DistributionMedium);
+                AddAttribute(xmlDoc, distribution, "Path", item.DistributionPath);
+                element.AppendChild(distribution);
+            }
+
+            xmlDoc.Save(path);
+        }
+
+        private static void AddAttribute(XmlDocument xmlDoc, XmlElement element, string name, string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return;
+
+            XmlAttribute attr = xmlDoc.CreateAttribute(name);
+            attr.Value = value;
+            element.Attributes.Append(attr);
+        }
     }
 }

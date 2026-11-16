@@ -10,8 +10,8 @@ namespace FacultySoftwareXml
 
             var result = (from item in doc.Descendants("SoftwareItem")
                           where (string.IsNullOrEmpty(criteria.Name)
-                                 || ((string)item.Attribute("Name") ?? "").Contains(criteria.Name, StringComparison.OrdinalIgnoreCase)
-                                 || ((string)item.Element("Annotation") ?? "").Contains(criteria.Name, StringComparison.OrdinalIgnoreCase))
+                                 || item.DescendantsAndSelf().Attributes().Any(a => a.Value.Contains(criteria.Name, StringComparison.OrdinalIgnoreCase))
+                                 || item.Descendants().Any(e => e.Value.Contains(criteria.Name, StringComparison.OrdinalIgnoreCase)))
                              && (string.IsNullOrEmpty(criteria.Type) || (string)item.Attribute("Type") == criteria.Type)
                              && (string.IsNullOrEmpty(criteria.Faculty) || (string)item.Element("Author").Attribute("Faculty") == criteria.Faculty)
                              && (string.IsNullOrEmpty(criteria.Chair) || (string)item.Element("Author").Attribute("Chair") == criteria.Chair)

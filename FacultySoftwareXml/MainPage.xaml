@@ -12,17 +12,13 @@
                 <Label x:Name="XmlFileLabel" Text="не вибрано" />
                 <Button Text="Відкрити XML" Clicked="OnOpenXmlClicked" />
 
-                <Label Text="XSL-файл:" FontAttributes="Bold" />
-                <Label x:Name="XslFileLabel" Text="не вибрано" />
-                <Button Text="Відкрити XSL" Clicked="OnOpenXslClicked" />
-
                 <Label Text="Спосіб аналізу:" FontAttributes="Bold" />
                 <RadioButton x:Name="SaxRadio" Content="SAX" GroupName="Strategy" IsChecked="True" />
                 <RadioButton x:Name="DomRadio" Content="DOM" GroupName="Strategy" />
                 <RadioButton x:Name="LinqRadio" Content="LINQ to XML" GroupName="Strategy" />
 
                 <Label Text="Параметри пошуку:" FontAttributes="Bold" />
-                <Label Text="Ключове слово (в назві або анотації):" />
+                <Label Text="Ключове слово:" />
                 <Entry x:Name="NameEntry" />
 
                 <HorizontalStackLayout>

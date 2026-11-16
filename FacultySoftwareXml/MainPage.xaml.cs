@@ -5,6 +5,8 @@ namespace FacultySoftwareXml
         private string xmlPath = "";
         private string xslPath = "";
         private string htmlPath = Path.Combine(FileSystem.AppDataDirectory, "result.html");
+        private string resultXmlPath = Path.Combine(FileSystem.AppDataDirectory, "search_result.xml");
+        private List<SoftwareItem> lastResult = null;
 
         public MainPage()
         {
@@ -20,7 +22,6 @@ namespace FacultySoftwareXml
             xmlPath = await CopyFromResources("software_catalog.xml");
             xslPath = await CopyFromResources("transform.xsl");
             XmlFileLabel.Text = xmlPath;
-            XslFileLabel.Text = xslPath;
             FillPickers();
         }
 
@@ -32,6 +33,7 @@ namespace FacultySoftwareXml
 
             xmlPath = path;
             XmlFileLabel.Text = path;
+            lastResult = null;
             try
             {
                 FillPickers();
@@ -42,16 +44,6 @@ namespace FacultySoftwareXml
             }
         }
 
-        private async void OnOpenXslClicked(object sender, EventArgs e)
-        {
-            string path = await PickFile(".xsl");
-            if (path == null)
-                return;
-
-            xslPath = path;
-            XslFileLabel.Text = path;
-        }
-
         private async void OnSearchClicked(object sender, EventArgs e)
         {
             try
@@ -59,6 +51,7 @@ namespace FacultySoftwareXml
                 Analyzer analyzer = new Analyzer(GetStrategy());
                 List<SoftwareItem> result = analyzer.Search(xmlPath, GetCriteria());
                 ShowResult(result);
+                lastResult = result;
             }
             catch (Exception ex)
             {
@@ -70,7 +63,15 @@ namespace FacultySoftwareXml
         {
             try
             {
-                Analyzer.Transform(xmlPath, xslPath, htmlPath);
+                if (lastResult == null)
+                {
+                    Analyzer.Transform(xmlPath, xslPath, htmlPath);
+                }
+                else
+                {
+                    Analyzer.SaveToXml(lastResult, resultXmlPath);
+                    Analyzer.Transform(resultXmlPath, xslPath, htmlPath);
+                }
                 await Launcher.Default.OpenAsync(new OpenFileRequest("HTML", new ReadOnlyFile(htmlPath)));
             }
             catch (Exception ex)
@@ -94,6 +95,7 @@ namespace FacultySoftwareXml
 
             ResultLabel.Text = "";
             CountLabel.Text = "Результати пошуку:";
+            lastResult = null;
         }
 
         private async void OnExitClicked(object sender, EventArgs e)

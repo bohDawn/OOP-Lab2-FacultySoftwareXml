@@ -22,10 +22,15 @@ namespace FacultySoftwareXml
 
         public bool HasKeyword(string keyword)
         {
-            if (Name != null && Name.Contains(keyword, StringComparison.OrdinalIgnoreCase))
-                return true;
-            if (Annotation != null && Annotation.Contains(keyword, StringComparison.OrdinalIgnoreCase))
-                return true;
+            string[] fields = { Id, Name, Type, Version, Architecture, ReleaseYear, RequiresAdmin,
+                                Annotation, AuthorName, Faculty, Chair, License, UsageTerms,
+                                DistributionMedium, DistributionPath };
+
+            foreach (string field in fields)
+            {
+                if (field != null && field.Contains(keyword, StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
             return false;
         }
 
